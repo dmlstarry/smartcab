@@ -43,7 +43,7 @@ class LearningAgent(Agent):
             self.epsilon=0
             self.alpha=0
         else:
-            self.epsilon= 0.99**self.trial_num
+            self.epsilon= 0.995**self.trial_num
             self.trial_num += 1
         return None
 
@@ -61,7 +61,7 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         # Set 'state' as a tuple of relevant data for the agent        
-        state = (waypoint,inputs['light'],inputs['oncoming'], inputs['left'])
+        state = (waypoint,inputs['light'],inputs['oncoming'], inputs['left'],inputs['right'])
 
         return state
 
@@ -184,8 +184,8 @@ def run():
     #   display      - set to False to disable the GUI if PyGame is enabled
     #   log_metrics  - set to True to log trial and simulation results to /logs
     #   optimized    - set to True to change the default log file name
-    sim = Simulator(env,update_delay=0.01,log_metrics=True,optimized=True)
-    
+    sim = Simulator(env,update_delay=0.0001,log_metrics=True,optimized=True,display=False)
+
     ##############
     # Run the simulator
     # Flags:
